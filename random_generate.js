@@ -11,5 +11,4 @@ function sorted(n) {
         console.log(sortedArr[i]);
     }
 }
-
 sorted(33)
