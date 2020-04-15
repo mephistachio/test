@@ -1,7 +1,8 @@
 import {describe, it} from "selenium-webdriver/testing";
-import {browser, by, error, protractor} from "protractor";
-import {falseIfMissing, passBoolean} from "protractor/built/util";
+import {browser, by, element, error, protractor, WebElement} from "protractor";
 import {WebDriver as driver} from "selenium-webdriver";
+import * as until from "selenium-webdriver";
+
 
 const loginPage = require('./pages/login_page');
 describe('Navigating to login page', function() {
@@ -28,7 +29,7 @@ describe('Navigating to login page', function() {
     });
 
     const mainPage = require('./pages/MainPage');
-    describe('Navigate to My Contracts', function () {
+    describe('Check image', function () {
         let EC = protractor.ExpectedConditions;
         EC.titleContains('Dashboard').then(function success() {
             return true;
@@ -43,8 +44,29 @@ describe('Navigating to login page', function() {
                 return false;
             }
         });
+    });
+
+    describe('Navigate to My Contracts', function () {
+        browser.driver.findElement(by.xpath('/html/body/wf-root/wf-private-layout/div/wf-sidebar/ul/li[2]/a')).click();
+let isEmptyContracts = browser.driver.findElement(by.xpath('/html/body/wf-root/wf-private-layout/div/div/wf-contracts-list/wf-empty-state/div/div[2]/p[1]'))
+isEmptyContracts.isDisplayed().then(contr => {
+    if (!contr) {
+
+    } else {
+        return console.log("There are no contracts");
+    }
 
     });
+    }
+);
+    describe('Navigate to Profile', async function () {
+        browser.driver.findElement(by.xpath('/html/body/wf-root/wf-private-layout/div/wf-sidebar/ul/li[5]/a')).click();
+       let perData = await driver.wait(until.elementLocated(browser.driver.findElement(by.xpath('/html/body/wf-root/wf-private-layout/div/wf-sidebar/ul/li[5]/a'))).click());
+
+    });})
+
+
+
 
 
 
