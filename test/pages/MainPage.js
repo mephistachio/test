@@ -1,9 +1,9 @@
-import {after} from "selenium-webdriver/testing";
-import{} from "protractor";
+import {} from "selenium-webdriver/testing";
+import {by, element} from "protractor";
 
-const mainPage = new function()
+const mainPage = function()
 {
-    let
+    let myContracts = element(by.xpath('/html/body/wf-root/wf-private-layout/div/wf-sidebar/ul/li[2]/a'));
 }
 
 
